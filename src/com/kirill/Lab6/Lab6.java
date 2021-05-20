@@ -29,8 +29,8 @@ public class Lab6 {
         System.out.println(first.toString());
 
         System.out.println("\nFiltered:");
-        System.out.println(first.findSongByDuration(100, 200).toString());
-        System.out.println(first.findSongByDuration(250, 400).toString());
+        System.out.println(first.findSongsByDuration(100, 200).toString());
+        System.out.println(first.findSongsByDuration(250, 400).toString());
     }
 }
 
@@ -58,7 +58,7 @@ class Album {
         Arrays.sort(songs, comp);
     }
 
-    public List<Song> findSongByDuration(int from, int to) {
+    public List<Song> findSongsByDuration(int from, int to) {
         return Arrays.stream(songs).filter((Song s) -> s.duration >= from && s.duration <= to).collect(Collectors.toList());
     }
 
@@ -69,62 +69,5 @@ class Album {
             res.append("\n").append(song.toString());
         }
         return res.toString();
-    }
-}
-
-
-//enum class Style
-class Song {
-    String name;
-    int duration;
-    String text;
-    String style;
-    public Song(String name, int duration, String text, String style) {
-        this.duration = duration;
-        this.text = text;
-        this.name = name;
-        this.style = style;
-    }
-
-    public void play() {
-        System.out.println("♫ " + text + " ♫");
-    }
-
-    @Override
-    public String toString() {
-        return "{ " + name + ", " + duration + "s, " + style + " }";
-    }
-}
-
-class JazzSong extends Song {
-    public JazzSong(String name, int duration, String text) {
-        super(name, duration, text, "Jazz");
-    }
-
-    @Override
-    public void play() {
-        System.out.println("\uD83C\uDFB7 " + text + " \uD83C\uDFB7");
-    }
-}
-
-class ViolinComposition extends Song {
-    public ViolinComposition(String name,int duration, String text) {
-        super(name, duration, text, "Violin");
-    }
-
-    @Override
-    public void play() {
-        System.out.println("\uD83C\uDFBB " + text + " \uD83C\uDFBB");
-    }
-}
-
-class PianoSong extends Song {
-    public PianoSong(String name,int duration, String text) {
-        super(name, duration, text, "Piano");
-    }
-
-    @Override
-    public void play() {
-        System.out.println("\uD83C\uDFB9 " + text + " \uD83C\uDFB9");
     }
 }
